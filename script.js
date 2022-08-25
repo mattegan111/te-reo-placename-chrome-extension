@@ -1,2 +1,1 @@
-let welcome = document.getElementById('welcome')
-console.log(welcome)
+document.getElementById('welcome').innerHTML = 'Hello from JS'
