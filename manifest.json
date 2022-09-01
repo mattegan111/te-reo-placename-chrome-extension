@@ -3,7 +3,8 @@
   "description": "Inserts Māori placenames onto webpages that contain New Zealand cities or towns.",
   "version": "1.0",
   "manifest_version": 3,
-  "background": {
+  "background":
+  {
     "service_worker": "background.js"
   },
   "permissions": ["storage", "activeTab", "scripting"],

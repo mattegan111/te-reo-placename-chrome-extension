@@ -8,7 +8,6 @@ chrome.storage.sync.get('color', ({ color }) => {
 // When the button is clicked, inject setPageBackgroundColor into current page
 changeColor.addEventListener('click', async () => {
   let [tab] = await chrome.tabs.query({ active: true, currentWindow: true })
-
   chrome.scripting.executeScript({
     target: { tabId: tab.id },
     func: setCityNamesToTeReo,
@@ -21,17 +20,26 @@ function setCityNamesToTeReo() {
   chrome.storage.sync.get('color', ({ color }) => {
     document.body.style.backgroundColor = color
 
-    let AucklandCount = document.body.innerHTML.match(/Auckland/g)
+    const elementsContainingAuckland = document.evaluate(
+      "*[contains(., 'Auckland')]",
+      document,
+      null,
+      XPathResult.ANY_TYPE,
+      null
+    )
+    const thisElement = elementsContainingAuckland.iterateNext()
+
+    let AucklandCount = Array(2).fill(0)
 
     AucklandCount.forEach(() => {
-      document.body.innerHTML = document.body.innerHTML.replace(
+      thisElement.innerHTML = thisElement.innerHTML.replace(
         'Auckland',
         'T&amacr;maki Makaurau'
       )
     })
 
     AucklandCount.forEach(() => {
-      document.body.innerHTML = document.body.innerHTML.replace(
+      thisElement.innerHTML = thisElement.innerHTML.replace(
         'T&amacr;maki Makaurau',
         'T&amacr;maki Makaurau (Auckland)'
       )
