@@ -20,10 +20,23 @@ changeColor.addEventListener('click', async () => {
 function setCityNamesToTeReo() {
   chrome.storage.sync.get('color', ({ color }) => {
     document.body.style.backgroundColor = color
-    document.body.innerHTML = document.body.innerHTML.replace(
-      'Auckland',
-      'T&amacr;maki Makaurau'
-    )
+
+    let AucklandCount = document.body.innerHTML.match(/Auckland/g)
+
+    AucklandCount.forEach(() => {
+      document.body.innerHTML = document.body.innerHTML.replace(
+        'Auckland',
+        'T&amacr;maki Makaurau'
+      )
+    })
+
+    AucklandCount.forEach(() => {
+      document.body.innerHTML = document.body.innerHTML.replace(
+        'T&amacr;maki Makaurau',
+        'T&amacr;maki Makaurau (Auckland)'
+      )
+    })
+
     // document.body.innerHTML = document.body.innerHTML.replace(
     //   'Christchurch',
     //   'Ōtautahi'
