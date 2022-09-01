@@ -11,14 +11,22 @@ changeColor.addEventListener('click', async () => {
 
   chrome.scripting.executeScript({
     target: { tabId: tab.id },
-    func: setPageBackgroundColor,
+    func: setCityNamesToTeReo,
   })
 })
 
 // The body of this function will be executed as a content script inside the
 // current page
-function setPageBackgroundColor() {
+function setCityNamesToTeReo() {
   chrome.storage.sync.get('color', ({ color }) => {
     document.body.style.backgroundColor = color
+    document.body.innerHTML = document.body.innerHTML.replace(
+      'Auckland',
+      'T&amacr;maki Makaurau'
+    )
+    // document.body.innerHTML = document.body.innerHTML.replace(
+    //   'Christchurch',
+    //   'Ōtautahi'
+    // )
   })
 }
