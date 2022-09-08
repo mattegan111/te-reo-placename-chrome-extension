@@ -16,35 +16,56 @@ changeColor.addEventListener("click", async () => {
 function setCityNamesToTeReo() {
   chrome.storage.sync.get("color", ({ color }) => {
     document.body.style.backgroundColor = color
+  })
 
-    const elementsContainingAuckland = document.evaluate(
-      "*[contains(., 'Auckland')]",
-      document,
-      null,
-      XPathResult.ANY_TYPE,
-      null
+  let pTags = document.querySelectorAll("p,h1,h2,h3,h4,h5")
+
+  pTags.forEach((element) => {
+    element.innerHTML = element.innerHTML.replace(
+      "Auckland",
+      "T&amacr;maki Makaurau (Auckland)"
     )
-    const thisElement = elementsContainingAuckland.iterateNext()
+  })
 
-    let AucklandCount = Array(3).fill(0)
+  pTags.forEach((element) => {
+    element.innerHTML = element.innerHTML.replace(
+      "Christchurch",
+      "`Otautahi (Christchurch)"
+    )
+  })
 
-    AucklandCount.forEach(() => {
-      thisElement.innerHTML = thisElement.innerHTML.replace(
-        "Auckland",
-        "T&amacr;maki Makaurau"
-      )
-    })
+  pTags.forEach((element) => {
+    element.innerHTML = element.innerHTML.replace(
+      "Wellington",
+      "`Te Whanganui-a-Tara (Wellington)"
+    )
+  })
 
-    AucklandCount.forEach(() => {
-      thisElement.innerHTML = thisElement.innerHTML.replace(
-        "T&amacr;maki Makaurau",
-        "T&amacr;maki Makaurau (Auckland)"
-      )
-    })
+  pTags.forEach((element) => {
+    element.innerHTML = element.innerHTML.replace(
+      "Christchurch",
+      "`Otautahi (Christchurch)"
+    )
+  })
 
-    // document.body.innerHTML = document.body.innerHTML.replace(
-    //   'Christchurch',
-    //   'Ōtautahi'
-    // )
+  pTags.forEach((element) => {
+    element.innerHTML = element.innerHTML.replace(
+      "Christchurch",
+      "`Otautahi (Christchurch)"
+    )
+  })
+
+  pTags.forEach((element) => {
+    element.innerHTML = element.innerHTML.replace(
+      "Christchurch",
+      "`Otautahi (Christchurch)"
+    )
+  })
+
+  pTags.forEach((element) => {
+    element.innerHTML = element.innerHTML.replace(
+      "Christchurch",
+      "`Otautahi (Christchurch)"
+    )
   })
 }
